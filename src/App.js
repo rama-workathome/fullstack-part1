@@ -1,34 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './component/Header.js'
-import Content from './component/Content.js'
-import Total from './component/Total.js'
+import Button from './component/Button.js'
+import Stats from './component/Stats.js'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+  const [ feedback, setFeedback ] = useState({
+    good: 0, bad: 0, neutral: 0
+  })
+  let newFeedback = {
+    good: feedback.good,
+    bad: feedback.bad,
+    neutral: feedback.neutral
+  } 
+  const setValue = (value) => {      
+    switch (value) {
+      case 'good':
+        newFeedback = {
+          good: feedback.good + 1,
+          bad: feedback.bad,
+          neutral: feedback.neutral
+        }
+        break;          
+      case 'bad':
+        newFeedback = {
+          good: feedback.good,
+          bad: feedback.bad + 1,
+          neutral: feedback.neutral
+        }
+        break;
+      case 'neutral':
+        newFeedback = {
+          good: feedback.good,
+          bad: feedback.bad,
+          neutral: feedback.neutral + 1
+        }
+        break;
+      default:
+        break;
+    }
+    //console.log(newFeedback)
+    return (
+      setFeedback(newFeedback)  
+    )
   }
 
-
   return (
-    <>
-      <Header course={course.name} />
-      <Content parts={course.parts} />
-      <Total total={course.parts} />
-    </>
+    <div>
+      <Header course="give feedback" />
+      <Button handler={()=>setValue('good')} text=" good " />
+      <Button handler={()=>setValue('neutral')} text=" neutral " />
+      <Button handler={()=>setValue('bad')} text=" bad " />
+      <Header course="statistics" />
+      <Stats stats={feedback} />
+    </div>
   )
 }
 
