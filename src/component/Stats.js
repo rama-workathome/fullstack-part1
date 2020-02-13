@@ -6,7 +6,7 @@ const Stats = ({stats}) => {
     let averageF=0
     let positiveF='0%'
     let allF=0
-    //if (stats.good + stats.neutral + stats.bad > 0) {
+    if (stats.good + stats.neutral + stats.bad > 0) {
       allF = stats.good + stats.bad + stats.neutral
       averageF = ((stats.good - stats.bad)/allF).toFixed(1)
       positiveF = ((stats.good*100)/allF).toFixed(1) + '%'
@@ -20,11 +20,11 @@ const Stats = ({stats}) => {
           <StatDisplay text="positive" value={positiveF} />
         </>
       )
-    // } else {
-    //  return (
-    //    <p>No feedback given</p>
-    //  )
-    //}
+    } else {
+      return (
+        <p>No feedback given</p>
+      )
+    }
   }
 
 export default Stats
