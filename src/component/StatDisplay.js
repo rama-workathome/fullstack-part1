@@ -2,7 +2,7 @@ import React from 'react'
 
 const StatDisplay = ({text,value}) => {
     return (
-      <p>{text} {value}</p>
+      <tr><td>{text}</td><td align="right">{value}</td></tr>
     )
   }
 

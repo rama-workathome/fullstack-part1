@@ -11,14 +11,16 @@ const Stats = ({stats}) => {
       averageF = ((stats.good - stats.bad)/allF).toFixed(1)
       positiveF = ((stats.good*100)/allF).toFixed(1) + '%'
       return (
-        <>
-          <StatDisplay text="good" value={stats.good} />
-          <StatDisplay text="neutral" value={stats.neutral} />
-          <StatDisplay text="bad" value={stats.bad} />
-          <StatDisplay text="all" value={allF} />
-          <StatDisplay text="average" value={averageF} />
-          <StatDisplay text="positive" value={positiveF} />
-        </>
+        <table>
+          <tbody>
+            <StatDisplay text="good" value={stats.good} />
+            <StatDisplay text="neutral" value={stats.neutral} />
+            <StatDisplay text="bad" value={stats.bad} />
+            <StatDisplay text="all" value={allF} />
+            <StatDisplay text="average" value={averageF} />
+            <StatDisplay text="positive" value={positiveF} />
+          </tbody>
+        </table>
       )
     } else {
       return (
