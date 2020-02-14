@@ -1,26 +1,34 @@
-import React, { useState } from 'react'
-import Button from './component/Button.js'
+import React from 'react'
+import Content from './component/Content'
+import Header from './component/Header'
 
 const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(new Array(props.anecdotes.length).fill(0))
-
-  const getQuote = () => {
-    setSelected(Math.floor((Math.random()*props.anecdotes.length)))
-  }
-
-  const addVote = (value) => {
-    let temp = [...votes]
-    temp[value]++
-    setVotes(temp)
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      },
+      {
+        name: 'Redux',
+        exercises: 11
+      }
+    ]
   }
 
   return (
     <div>
-      <p>{props.anecdotes[selected]}</p>
-      <p>has {votes[selected]} votes</p>
-      <Button handler={()=>addVote(selected)} text="vote" />
-      <Button handler={()=>getQuote()} text="next anecdote" />
+      <Header course={course.name} />
+      <Content parts={course.parts} />
     </div>
   )
   
