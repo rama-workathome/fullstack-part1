@@ -1,6 +1,5 @@
 import React from 'react'
-import Content from './component/Content'
-import Header from './component/Header'
+import Course from './component/Course'
 
 const App = (props) => {
   const course = {
@@ -27,11 +26,10 @@ const App = (props) => {
 
   return (
     <div>
-      <Header course={course.name} />
-      <Content parts={course.parts} />
+      <Course course={course} />
     </div>
   )
-  
+
 }
 
 
